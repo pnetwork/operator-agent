@@ -16,6 +16,32 @@
     "iconUrl": "https://ai-operator.com/icons/openai-assistant.png",
     "documentation": "https://ai-operator.com/docs/openai-assistant"
   },
+  "source": {
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/ai-operator/openai-assistant.git",
+      "branch": "main",
+      "tag": "v1.0.0",
+      "auth": {
+        "type": "ssh",
+        "sshKeySecret": "openai-assistant-deploy-key"
+      }
+    },
+    "build": {
+      "context": ".",
+      "dockerfile": "Dockerfile",
+      "args": {
+        "PYTHON_VERSION": "3.9"
+      }
+    },
+    "registry": {
+      "url": "ghcr.io/ai-operator",
+      "auth": {
+        "type": "token",
+        "secretName": "registry-auth-token"
+      }
+    }
+  },
   "runtime": {
     "language": {
       "name": "python",
@@ -112,7 +138,7 @@
 }
 ```
 
-此規格定義了 MCP Server 在市集上的顯示資訊、運行環境需求以及安裝時的配置要求。當使用者點選安裝時，系統會根據 `installConfig` 中的定義產生配置表單，要求使用者填寫必要資訊。
+此規格定義了 MCP Server 在市集上的顯示資訊、程式碼來源、運行環境需求以及安裝時的配置要求。當使用者點選安裝時，系統會根據 `installConfig` 中的定義產生配置表單，要求使用者填寫必要資訊。
 
 ### 規格說明
 
@@ -125,13 +151,23 @@
    - iconUrl：圖示網址
    - documentation：文件連結
 
-2. runtime：執行環境設定
+2. source：程式碼來源設定
+   - repository：程式碼儲存庫資訊
+     - type：版本控制類型
+     - url：儲存庫網址
+     - branch：使用分支
+     - tag：版本標籤
+     - auth：存取認證設定
+   - build：建置相關設定
+   - registry：容器映像檔登錄設定
+
+3. runtime：執行環境設定
    - language：程式語言及版本
    - baseImage：Docker 基礎映像檔資訊
    - dependencies：相依套件清單
    - environmentVariables：環境變數設定
 
-3. installConfig：安裝配置
+4. installConfig：安裝配置
    - required：必要配置項目
    - advanced：進階配置選項
    - 每個配置項目包含：
@@ -142,7 +178,7 @@
      - default：預設值（選填）
      - required：是否必填
 
-4. tools：提供的工具列表
+5. tools：提供的工具列表
    - name：工具名稱
    - description：工具說明
    - parameters：工具參數定義
