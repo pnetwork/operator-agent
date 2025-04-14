@@ -1,6 +1,6 @@
 # AI-Operator
 
-## MCP Server Marketplace Spec
+## MCP Server Marketplace Example
 
 ```json
 {
