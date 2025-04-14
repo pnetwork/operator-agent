@@ -52,6 +52,15 @@
       "tag": "3.9-slim",
       "registry": "docker.io"
     },
+    "command": "python",
+    "args": ["/path/to/server.py"],
+    "envs": {
+      "PYTHONPATH": "/app",
+      "PYTHONUNBUFFERED": "1",
+      "API_KEY": "your_api_key"
+    },
+    "alwaysAllow": true,
+    "disabled": false,
     "dependencies": {
       "python": {
         "openai": "^1.0.0",
@@ -62,10 +71,6 @@
         "memory": "512Mi",
         "cpu": "0.5"
       }
-    },
-    "environmentVariables": {
-      "PYTHONPATH": "/app",
-      "PYTHONUNBUFFERED": "1"
     }
   },
   "installConfig": {
