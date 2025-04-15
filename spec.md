@@ -287,43 +287,6 @@
           }
         }
       }
-    },
-    "tools": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "required": ["name", "description", "parameters"],
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "parameters": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "required": ["type", "description"],
-              "properties": {
-                "type": {
-                  "type": "string"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "enum": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "default": {}
-              }
-            }
-          }
-        }
-      }
     }
   }
 }
@@ -438,7 +401,3 @@
 - advanced 為選填
 
 另有一個選填的頂層屬性：
-
-5. tools
-- 定義 MCP Server 提供的工具和其參數
-- 若提供則需符合定義的結構

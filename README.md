@@ -123,23 +123,6 @@
       }
     }
   },
-  "tools": [
-    {
-      "name": "chat",
-      "description": "使用 GPT 模型進行對話",
-      "parameters": {
-        "model": {
-          "type": "string",
-          "enum": ["gpt-4", "gpt-3.5-turbo"],
-          "default": "gpt-3.5-turbo"
-        },
-        "message": {
-          "type": "string",
-          "description": "使用者輸入的訊息"
-        }
-      }
-    }
-  ]
 }
 ```
 
@@ -182,8 +165,3 @@
      - validation：驗證規則
      - default：預設值（選填）
      - required：是否必填
-
-5. tools：提供的工具列表
-   - name：工具名稱
-   - description：工具說明
-   - parameters：工具參數定義
