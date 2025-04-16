@@ -9,7 +9,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "description": "MCP Server 市集規格定義",
-  "required": ["marketplace", "source", "runtime", "installConfig"],
+  "required": ["marketplace", "runtime", "installConfig"],
   "properties": {
     "marketplace": {
       "type": "object",

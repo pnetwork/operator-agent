@@ -57,7 +57,8 @@
     "envs": {
       "PYTHONPATH": "/app",
       "PYTHONUNBUFFERED": "1",
-      "API_KEY": "your_api_key"
+      "API_KEY": "{{installConfig.apiKey}}",
+      "ORGANIZATION_ID": "{{installConfig.organizationId}}"
     },
     "alwaysAllow": true,
     "disabled": false,
