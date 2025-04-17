@@ -61,103 +61,11 @@
         }
       }
     },
-    "source": {
-      "type": "object",
-      "description": "程式碼來源設定",
-      "required": ["repository", "build", "registry"],
-      "properties": {
-        "repository": {
-          "type": "object",
-          "required": ["type", "url", "branch", "tag", "auth"],
-          "properties": {
-            "type": {
-              "type": "string",
-              "enum": ["git"]
-            },
-            "url": {
-              "type": "string",
-              "format": "uri"
-            },
-            "branch": {
-              "type": "string"
-            },
-            "tag": {
-              "type": "string"
-            },
-            "auth": {
-              "type": "object",
-              "required": ["type"],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "enum": ["ssh", "token"]
-                },
-                "sshKeySecret": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        },
-        "build": {
-          "type": "object",
-          "required": ["context", "dockerfile"],
-          "properties": {
-            "context": {
-              "type": "string"
-            },
-            "dockerfile": {
-              "type": "string"
-            },
-            "args": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              }
-            }
-          }
-        },
-        "registry": {
-          "type": "object",
-          "required": ["url", "auth"],
-          "properties": {
-            "url": {
-              "type": "string"
-            },
-            "auth": {
-              "type": "object",
-              "required": ["type", "secretName"],
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "enum": ["token"]
-                },
-                "secretName": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "runtime": {
       "type": "object",
       "description": "執行環境設定",
-      "required": ["language", "baseImage", "command", "args", "envs", "alwaysAllow", "disabled"],
+      "required": ["baseImage", "command", "args", "envs", "alwaysAllow", "disabled"],
       "properties": {
-        "language": {
-          "type": "object",
-          "required": ["name", "version"],
-          "properties": {
-            "name": {
-              "type": "string"
-            },
-            "version": {
-              "type": "string"
-            }
-          }
-        },
         "baseImage": {
           "type": "object",
           "required": ["repository", "tag", "registry"],
@@ -194,96 +102,45 @@
         "disabled": {
           "type": "boolean"
         },
-        "dependencies": {
-          "type": "object",
-          "properties": {
-            "language-specific": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "string"
-              }
-            },
-            "system": {
-              "type": "object",
-              "properties": {
-                "memory": {
-                  "type": "string"
-                },
-                "cpu": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
       }
     },
     "installConfig": {
       "type": "object",
       "description": "安裝配置",
-      "required": ["required"],
-      "properties": {
-        "required": {
-          "type": "object",
-          "minProperties": 1,
-          "additionalProperties": {
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["type", "label", "description"],
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "label": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "validation": {
             "type": "object",
-            "required": ["type", "label", "description"],
             "properties": {
-              "type": {
+              "pattern": {
                 "type": "string"
               },
-              "label": {
+              "message": {
                 "type": "string"
               },
-              "description": {
-                "type": "string"
+              "min": {
+                "type": "number"
               },
-              "validation": {
-                "type": "object",
-                "properties": {
-                  "pattern": {
-                    "type": "string"
-                  },
-                  "message": {
-                    "type": "string"
-                  }
-                }
+              "max": {
+                "type": "number"
               }
             }
-          }
-        },
-        "advanced": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "object",
-            "required": ["type", "label", "description"],
-            "properties": {
-              "type": {
-                "type": "string"
-              },
-              "label": {
-                "type": "string"
-              },
-              "description": {
-                "type": "string"
-              },
-              "default": {},
-              "validation": {
-                "type": "object",
-                "properties": {
-                  "min": {
-                    "type": "number"
-                  },
-                  "max": {
-                    "type": "number"
-                  }
-                }
-              },
-              "required": {
-                "type": "boolean"
-              }
-            }
+          },
+          "default": {},
+          "required": {
+            "type": "boolean"
           }
         }
       }
@@ -308,37 +165,7 @@
     "iconUrl": "https://ai-operator.com/icons/openai-assistant.png",
     "documentation": "https://ai-operator.com/docs/openai-assistant"
   },
-  "source": {
-    "repository": {
-      "type": "git",
-      "url": "https://github.com/ai-operator/openai-assistant.git",
-      "branch": "main",
-      "tag": "v1.0.0",
-      "auth": {
-        "type": "ssh",
-        "sshKeySecret": "openai-assistant-deploy-key"
-      }
-    },
-    "build": {
-      "context": ".",
-      "dockerfile": "Dockerfile",
-      "args": {
-        "PYTHON_VERSION": "3.9"
-      }
-    },
-    "registry": {
-      "url": "ghcr.io/ai-operator",
-      "auth": {
-        "type": "token",
-        "secretName": "registry-auth-token"
-      }
-    }
-  },
   "runtime": {
-    "language": {
-      "name": "python",
-      "version": "3.9"
-    },
     "baseImage": {
       "repository": "python",
       "tag": "3.9-slim",
@@ -355,23 +182,21 @@
     "disabled": false
   },
   "installConfig": {
-    "required": {
-      "apiKey": {
-        "type": "string",
-        "label": "OpenAI API 金鑰",
-        "description": "請輸入您的 OpenAI API 金鑰",
-        "validation": {
-          "pattern": "^sk-[A-Za-z0-9]{48}$",
-          "message": "請輸入有效的 OpenAI API 金鑰格式"
-        }
-      },
-      "organizationId": {
-        "type": "string",
-        "label": "組織 ID",
-        "description": "請輸入您的 OpenAI 組織 ID（選填）",
-        "required": false
-      }
-    }
+   "apiKey": {
+     "type": "string",
+     "label": "OpenAI API 金鑰",
+     "description": "請輸入您的 OpenAI API 金鑰",
+     "validation": {
+       "pattern": "^sk-[A-Za-z0-9]{48}$",
+       "message": "請輸入有效的 OpenAI API 金鑰格式"
+     }
+   },
+   "organizationId": {
+     "type": "string",
+     "label": "組織 ID",
+     "description": "請輸入您的 OpenAI 組織 ID（選填）",
+     "required": false
+   }
   }
 }
 ```
@@ -385,19 +210,10 @@
 - 包含名稱、描述、版本等基本資訊
 - 所有子屬性皆為必填
 
-2. source
-- 程式碼來源設定
-- 定義程式碼儲存庫位置、認證方式和建置設定
-- repository、build、registry 皆為必填
-
-3. runtime
+2. runtime
 - 執行環境設定
-- 指定程式語言、基礎映像檔和啟動命令等
-- dependencies 為選填
+- 指定基礎映像檔和啟動命令等
 
-4. installConfig
+3. installConfig
 - 安裝配置
-- required 為必填
-- advanced 為選填
-
-另有一個選填的頂層屬性：
+- 每個配置項目可以設定是否必填
