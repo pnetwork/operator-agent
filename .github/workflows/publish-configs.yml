@@ -11,7 +11,8 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v4
       
@@ -79,7 +80,7 @@ jobs:
                       <div class="mt-4">
                         <p class="text-sm text-gray-500">Tags</p>
                         <div class="flex flex-wrap gap-2 mt-1">
-                          ${content.marketplace.tags.map(tag => 
+                          ${content.marketplace.tags.map(tag =>
                             `<span class="bg-gray-200 rounded-full px-3 py-1 text-sm">${tag}</span>`
                           ).join("")}
                         </div>
@@ -95,20 +96,33 @@ jobs:
             fs.writeFileSync("public/index.html", html);
           '
 
-      - name: Generate new tag
-        id: tag
+      - name: Install AWS CLI
         run: |
-          timestamp=$(date +%Y%m%d%H%M%S)
-          echo "new_tag=release-${timestamp}" >> $GITHUB_OUTPUT
+          curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+          unzip awscliv2.zip
+          sudo ./aws/install --update
 
-      - name: Create Release Tag
-        run: |
-          git tag ${{ steps.tag.outputs.new_tag }}
-          git push origin ${{ steps.tag.outputs.new_tag }}
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          github_token: ${{ secrets.PNOPS_REPO_TOKEN }}
-          publish_dir: ./public
-          publish_branch: gh-pages
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-1
+
+      - name: Upload to S3
+        run: |
+          aws s3 cp public/configs.json s3://pentium-repo/operator-agent/marketplace/configs.json --acl public-read
+          aws s3 cp public/index.html s3://pentium-repo/operator-agent/marketplace/index.html --acl public-read
+
+      - name: Configure AWS Credentials for CloudFront
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.CLOUDFRONT_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.CLOUDFRONT_AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-1
+
+      - name: Invalidate CloudFront Cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/operator-agent/marketplace/configs.json" "/operator-agent/marketplace/index.html"
