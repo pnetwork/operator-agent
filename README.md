@@ -27,13 +27,13 @@
     "envs": {
       "PYTHONPATH": "/app",
       "PYTHONUNBUFFERED": "1",
-      "API_KEY": "{{installConfig.apiKey}}",
-      "ORGANIZATION_ID": "{{installConfig.organizationId}}"
+      "API_KEY": "{{config.apiKey}}",
+      "ORGANIZATION_ID": "{{config.organizationId}}"
     },
     "alwaysAllow": true,
     "disabled": false
   },
-  "installConfig": {
+  "config": {
     "apiKey": {
       "type": "string",
       "label": "OpenAI API 金鑰",
@@ -82,7 +82,7 @@
 }
 ```
 
-此規格定義了 MCP Server 在市集上的顯示資訊、程式碼來源、運行環境需求以及安裝時的配置要求。當使用者點選安裝時，系統會根據 `installConfig` 中的定義產生配置表單，要求使用者填寫必要資訊。
+此規格定義了 MCP Server 在市集上的顯示資訊、程式碼來源、運行環境需求以及安裝時的配置要求。當使用者點選安裝時，系統會根據 `config` 中的定義產生配置表單，要求使用者填寫必要資訊。
 
 ### 規格說明
 
@@ -99,7 +99,7 @@
    - baseImage：Docker 基礎映像檔資訊
    - environmentVariables：環境變數設定
 
-4. installConfig：安裝配置項目
+4. config：安裝配置項目
    每個配置項目包含：
      - type：資料類型
      - label：顯示標籤

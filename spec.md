@@ -9,7 +9,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "description": "MCP Server 市集規格定義",
-  "required": ["marketplace", "runtime", "installConfig"],
+  "required": ["marketplace", "runtime", "config"],
   "properties": {
     "marketplace": {
       "type": "object",
@@ -104,7 +104,7 @@
         },
       }
     },
-    "installConfig": {
+    "config": {
       "type": "object",
       "description": "安裝配置",
       "minProperties": 1,
@@ -181,7 +181,7 @@
     "alwaysAllow": true,
     "disabled": false
   },
-  "installConfig": {
+  "config": {
    "apiKey": {
      "type": "string",
      "label": "OpenAI API 金鑰",
@@ -214,6 +214,6 @@
 - 執行環境設定
 - 指定基礎映像檔和啟動命令等
 
-3. installConfig
+3. config
 - 安裝配置
 - 每個配置項目可以設定是否必填
