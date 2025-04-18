@@ -1,0 +1,114 @@
+name: Publish MCP Server Configs
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'mcp-servers/**'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Generate configs list
+        run: |
+          mkdir -p public
+          node -e '
+            const fs = require("fs");
+            const path = require("path");
+            
+            const configs = [];
+            const configsDir = "mcp-servers";
+            
+            fs.readdirSync(configsDir).forEach(file => {
+              if (file.endsWith(".config")) {
+                const content = JSON.parse(fs.readFileSync(path.join(configsDir, file)));
+                configs.push({
+                  filename: file,
+                  content: content
+                });
+              }
+            });
+            
+            fs.writeFileSync("public/configs.json", JSON.stringify(configs, null, 2));
+            
+            const html = `
+            <!DOCTYPE html>
+            <html>
+            <head>
+              <meta charset="UTF-8">
+              <title>MCP Server Configs</title>
+              <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2/dist/tailwind.min.css" rel="stylesheet">
+            </head>
+            <body class="bg-gray-100">
+              <div class="container mx-auto px-4 py-8">
+                <h1 class="text-3xl font-bold mb-8">MCP Server Configs</h1>
+                <div class="mb-4">
+                  <a href="configs.json" download class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    下載完整配置文件
+                  </a>
+                </div>
+                <div class="grid gap-6">
+                  ${configs.map(({filename, content}) => `
+                    <div class="bg-white shadow rounded-lg p-6">
+                      <h2 class="text-xl font-semibold mb-4">${content.marketplace.name}</h2>
+                      <p class="text-gray-600 mb-4">${content.marketplace.description}</p>
+                      <div class="grid grid-cols-2 gap-4">
+                        <div>
+                          <p class="text-sm text-gray-500">Version</p>
+                          <p>${content.marketplace.version}</p>
+                        </div>
+                        <div>
+                          <p class="text-sm text-gray-500">Maintainer</p>
+                          <p>${content.marketplace.maintainer.name}</p>
+                        </div>
+                      </div>
+                      <div class="mt-4">
+                        <p class="text-sm text-gray-500">Tags</p>
+                        <div class="flex flex-wrap gap-2 mt-1">
+                          ${content.marketplace.tags.map(tag => 
+                            `<span class="bg-gray-200 rounded-full px-3 py-1 text-sm">${tag}</span>`
+                          ).join("")}
+                        </div>
+                      </div>
+                    </div>
+                  `).join("")}
+                </div>
+              </div>
+            </body>
+            </html>
+            `;
+            
+            fs.writeFileSync("public/index.html", html);
+          '
+
+      - name: Generate new tag
+        id: tag
+        run: |
+          timestamp=$(date +%Y%m%d%H%M%S)
+          echo "new_tag=release-${timestamp}" >> $GITHUB_OUTPUT
+
+      - name: Create Release Tag
+        run: |
+          git tag ${{ steps.tag.outputs.new_tag }}
+          git push origin ${{ steps.tag.outputs.new_tag }}
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.PNOPS_REPO_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages

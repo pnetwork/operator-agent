@@ -1,0 +1,31 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+
+# 構建輸出
+public/
+dist/
+build/
+
+# IDE 和編輯器
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# 環境變量
+.env
+.env.local
+.env.*.local
+
+# 日誌
+logs/
+*.log
+
+# 緩存
+.cache/
+.temp/

@@ -1,0 +1,16 @@
+{
+  "name": "mcp-configs-publisher",
+  "version": "1.0.0",
+  "description": "MCP Servers Configuration Publisher",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.js",
+    "serve": "http-server ./public -p 3000 -o",
+    "dev": "npm run build && npm run serve",
+    "lint": "node scripts/lint.js"
+  },
+  "dependencies": {
+    "fs-extra": "^11.1.0",
+    "http-server": "^14.1.1"
+  }
+}
