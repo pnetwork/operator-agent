@@ -1,109 +1,79 @@
-# AI-Operator
+# Pentium Agent - [BETA v1.0.0]
 
-## MCP Server Marketplace Example
+[奔騰網路科技股份有限公司](https://www.pentiumnetwork.com/) 正式發佈新產品 **Pentium Agent** 的 BETA 版本。這是一款專為維運及開發人員設計的 AI Agent，BETA 版本可免費下載並安裝於您的 Windows 或 Mac 裝置上。立即開始建立您的個人 AI 助手！
 
-```json
-{
-  "marketplace": {
-    "name": "OpenAI Assistant",
-    "description": "OpenAI API 整合服務，提供 GPT-4、GPT-3.5 等模型的存取能力",
-    "version": "1.0.0",
-    "maintainer": {
-      "name": "AI Operator Team",
-      "email": "support@ai-operator.com"
-    },
-    "tags": ["AI", "OpenAI", "GPT", "LLM"],
-    "iconUrl": "https://ai-operator.com/icons/openai-assistant.png",
-    "documentation": "https://ai-operator.com/docs/openai-assistant"
-  },
-  "runtime": {
-    "baseImage": {
-      "repository": "python",
-      "tag": "3.9-slim",
-      "registry": "docker.io"
-    },
-    "command": "python",
-    "args": ["/path/to/server.py"],
-    "envs": {
-      "PYTHONPATH": "/app",
-      "PYTHONUNBUFFERED": "1",
-      "API_KEY": "{{config.apiKey}}",
-      "ORGANIZATION_ID": "{{config.organizationId}}"
-    },
-    "alwaysAllow": true,
-    "disabled": false
-  },
-  "config": {
-    "apiKey": {
-      "type": "string",
-      "label": "OpenAI API 金鑰",
-      "description": "請輸入您的 OpenAI API 金鑰",
-      "validation": {
-        "pattern": "^sk-[A-Za-z0-9]{48}$",
-        "message": "請輸入有效的 OpenAI API 金鑰格式"
-      }
-    },
-    "organizationId": {
-      "type": "string",
-      "label": "組織 ID",
-      "description": "請輸入您的 OpenAI 組織 ID（選填）",
-      "required": false
-    },
-    "apiEndpoint": {
-      "type": "string",
-      "label": "API 端點",
-      "description": "自訂 API 端點（選填）",
-      "default": "https://api.openai.com/v1",
-      "required": false
-    },
-    "maxTokens": {
-      "type": "number",
-      "label": "最大 Token 數",
-      "description": "單次請求的最大 Token 限制",
-      "default": 4096,
-      "validation": {
-        "min": 1,
-        "max": 8192
-      },
-      "required": false
-    },
-    "timeout": {
-      "type": "number",
-      "label": "請求逾時時間",
-      "description": "API 請求逾時時間（秒）",
-      "default": 30,
-      "validation": {
-        "min": 1,
-        "max": 300
-      },
-      "required": false
-    }
-  },
-}
-```
+Pentium Agent 提供主流且友善的語言模型聊天介面，輕鬆添加 MCP Server，並搭載奔騰獨有的任務管理系統，助您輕鬆整合 AI 工具於日常工作流程。主要特色包括：
 
-此規格定義了 MCP Server 在市集上的顯示資訊、程式碼來源、運行環境需求以及安裝時的配置要求。當使用者點選安裝時，系統會根據 `config` 中的定義產生配置表單，要求使用者填寫必要資訊。
+1.  **主流友善的語言模型介面**：簡單直覺的介面，讓您快速與大型語言模型 (LLM) 對話並展開任務。
+2.  **輕鬆設定 MCP**：無需繁瑣的 Config 檔案，透過直觀的 UI 新增 MCP 伺服器，或從 Pentium 提供的 MCP 市集快速添加 MCP Server。
+3.  **任務管理系統**：整合奔騰核心任務功能，讓語言模型在背景執行任務，自動化處理排程與自動化任務，並提供介面統一管理。
 
-### 規格說明
+## 下載
 
-1. marketplace：定義在市集上的顯示資訊
-   - name：伺服器名稱
-   - description：功能描述
-   - version：版本號
-   - maintainer：維護者資訊
-   - tags：分類標籤
-   - iconUrl：圖示網址
-   - documentation：文件連結
+Pentium Agent 目前支援 Mac（ARM）與 Windows 系統。您可透過以下連結下載最新版本：
 
-3. runtime：執行環境設定
-   - baseImage：Docker 基礎映像檔資訊
-   - environmentVariables：環境變數設定
+* [Windows](#)
+* [Mac(ARM)](#)
 
-4. config：安裝配置項目
-   每個配置項目包含：
-     - type：資料類型
-     - label：顯示標籤
-     - description：說明文字
-     - validation：驗證規則
-     - default：預設值（選填）
-     - required：是否必填
+***請確保您的環境已安裝 Docker。***
+
+## 快速開始
+
+下載並安裝應用程式後（請參閱上方 [下載](#下載)），依照以下步驟即可開始使用 Pentium Agent：
+
+1.  **啟動應用程式** 安裝後，從應用程式列表找到 Pentium Agent 並啟動。
+2.  **設定 AI 提供者** 新增您偏好的語言模型平台 (目前僅支援 OpenRouter)，並選擇欲使用的模型。
+3.  **設定 MCP 伺服器** 在 MCP 頁面新增您的 MCP 伺服器，或從 Pentium 市集選擇並加入。
+4.  **開始使用 Pentium Agent！** 立即與 LLM 對話，體驗任務自動化的強大功能！
+
+## 社群回饋
+
+Pentium Agent 正在積極開發中。我們非常重視使用者的意見與回饋。如果您遇到任何問題或有任何建議，歡迎透過以下管道與我們聯繫：
+
+* **Issue 回報**：[Github Issues](https://github.com/pnetwork/operator-agent/issues)
+* **建議與回饋**：[透過官網提供回饋](https://www.pentiumnetwork.com/)
+
+## 授權條款
+
+[LICENSE](LICENSE)
+
+---
+
+# Pentium Agent - [BETA v1.0.0]
+
+[Pentium Network Technology Co., Ltd.](https://www.pentiumnetwork.com/) officially releases the BETA version of its new product, **Pentium Agent**. This AI Agent is specifically tailored for operations and developers. The BETA version is available for free download and installation on your Windows or Mac devices. Start building your personal AI assistant today!
+
+Pentium Agent provides a mainstream and user-friendly language model chat interface, easy MCP Server addition, and features Pentium's unique task management system, helping you seamlessly integrate AI tools into your daily workflow. Key features include:
+
+1.  **Mainstream & User-Friendly Language Model Interface**: A simple and intuitive interface allows you to quickly chat with large language models (LLMs) and start tasks.
+2.  **Effortless MCP Setup**: No need for complex configuration files. Easily add MCP servers via the intuitive UI, or quickly join from the MCP Marketplace provided by Pentium, saving time and effort.
+3.  **Task Management System**: Integrates Pentium's core task functionality, allowing language models to execute tasks in the background, automate scheduled and automated tasks, and providing an interface for unified management.
+
+## Download
+
+Pentium Agent currently supports Mac (ARM) and Windows systems. You can download the latest version via the links below:
+
+* [Windows](#)
+* [Mac(ARM)](#)
+
+***Please ensure your environment has Docker installed.***
+
+## Quick Start
+
+After downloading and installing the application (see [Download](#download) above), follow these steps to start using Pentium Agent:
+
+1.  **Launch the Application**: After installation, find and launch Pentium Agent from your application list.
+2.  **Configure AI Provider**: Add your preferred language model platform (currently only OpenRouter is supported) and select the model you wish to use.
+3.  **Set up MCP Servers**: On the MCP page, add your MCP servers, or select and join from the Pentium Marketplace.
+4.  **Start Using Pentium Agent!** Immediately start chatting with LLMs and experience the power of task automation!
+
+## Community Feedback
+
+Pentium Agent is actively under development. We highly value user feedback and suggestions. If you encounter any issues or have any recommendations, please feel free to contact us through the following channels:
+
+* **Report Issues**：[Github Issues](https://github.com/pnetwork/operator-agent/issues)
+* **Suggestions & Feedback**：[Provide Feedback via Website](https://www.pentiumnetwork.com/)
+
+## License
+
+[LICENSE](LICENSE)
