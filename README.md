@@ -41,7 +41,7 @@ Pentium Agent 正在積極開發中。我們非常重視使用者的意見與回
 
 # Pentium Agent - [BETA v1.0.0]
 
-[Pentium Network Technology Co., Ltd.](https://www.pentiumnetwork.com/) officially releases the BETA version of its new product, **Pentium Agent**. This AI Agent is specifically tailored for operations and developers. The BETA version is available for free download and installation on your Windows or Mac devices. Start building your personal AI assistant today!
+[Pentium Network Technology Ltd](https://www.pentiumnetwork.com/) officially releases the BETA version of its new product, **Pentium Agent**. This AI Agent is specifically tailored for operations and developers. The BETA version is available for free download and installation on your Windows or Mac devices. Start building your personal AI assistant today!
 
 Pentium Agent provides a mainstream and user-friendly language model chat interface, easy MCP Server addition, and features Pentium's unique task management system, helping you seamlessly integrate AI tools into your daily workflow. Key features include:
 
