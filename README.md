@@ -33,9 +33,9 @@ Pentium Agent 正在積極開發中。我們非常重視使用者的意見與回
 * **Issue 回報**：[Github Issues](https://github.com/pnetwork/operator-agent/issues)
 * **建議與回饋**：[透過官網提供回饋](https://www.pentiumnetwork.com/)
 
-## 授權條款
+## 終端使用者授權合約
 
-[LICENSE](LICENSE)
+[EULA](EULA)
 
 ---
 
@@ -74,6 +74,6 @@ Pentium Agent is actively under development. We highly value user feedback and s
 * **Report Issues**：[Github Issues](https://github.com/pnetwork/operator-agent/issues)
 * **Suggestions & Feedback**：[Provide Feedback via Website](https://www.pentiumnetwork.com/)
 
-## License
+## End-User License Agreement
 
-[LICENSE](LICENSE)
+[EULA](EULA)
