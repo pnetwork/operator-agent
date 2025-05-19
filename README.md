@@ -12,8 +12,8 @@ Pentium Agent 提供主流且友善的語言模型聊天介面，輕鬆添加 MC
 
 Pentium Agent 目前支援 Mac（ARM）與 Windows 系統，***請確保您的環境已安裝 [Docker](https://www.docker.com/) 環境***。您可透過以下連結下載最新版本：
 
-* [Windows](#)
-* [Mac(ARM)](#)
+* [Windows](https://releases.pentium.network/pentium-agent/1.0.0/PentiumAgent-1.0.0-beta-win-x64.exe)
+* [Mac(ARM)](https://releases.pentium.network/pentium-agent/1.0.0/PentiumAgent-1.0.0-beta-mac-arm64.dmg)
 
 Mac 的安裝者如碰到檔案損毀問題，可參考[此份文件](https://mrmad.com.tw/macos-ventura-file-corrupted)解決無法開啟的問題。
 
@@ -22,10 +22,10 @@ Mac 的安裝者如碰到檔案損毀問題，可參考[此份文件](https://mr
 
 啟動 Pentium 應用程式後，您可以依照以下步驟開始使用 Pentium Agent：
 
-1.  **設定 AI 提供者：**新增您偏好的語言模型平台 (目前僅支援 OpenRouter)。您可以在 [OpenRouter](https://openrouter.ai/settings/keys) 產生 API Key 後，將其新增至 Pentium Agent，並選擇欲使用的模型。
-2.  **設定 MCP 伺服器：**在 MCP 頁面新增您的 MCP 伺服器，或從 Pentium 市集選擇並加入。Pentium 市集提供的 MCP 伺服器皆以 Docker 方式提供，使用前請確認您的 Docker 環境已啟動。
-3.  **與 LLM 聊天並建立任務：**在 Pentium Agent 中您可以像使用主流的對話應用程式一樣，與 LLM 進行對話，解決您的日常工作與生活大小事，並建立任務。
-4.  **建立日常任務：**您可以透過「請幫我建立一個任務」來建立日常任務。請指定 [cron](https://en.wikipedia.org/wiki/Cron) 執行時間，並描述工作內容，Pentium Agent 將會為您建立任務。
+1.  **設定 AI 提供者**：新增您偏好的語言模型平台 (目前僅支援 OpenRouter)。您可以在 [OpenRouter](https://openrouter.ai/settings/keys) 產生 API Key 後，將其新增至 Pentium Agent，並選擇欲使用的模型。
+2.  **設定 MCP 伺服器**：在 MCP 頁面新增您的 MCP 伺服器，或從 Pentium 市集選擇並加入。Pentium 市集提供的 MCP 伺服器皆以 Docker 方式提供，使用前請確認您的 Docker 環境已啟動。
+3.  **與 LLM 聊天並建立任務**：在 Pentium Agent 中您可以像使用主流的對話應用程式一樣，與 LLM 進行對話，解決您的日常工作與生活大小事，並建立任務。
+4.  **建立日常任務**：您可以透過「請幫我建立一個任務」來建立日常任務。請指定 [cron](https://en.wikipedia.org/wiki/Cron) 執行時間，並描述工作內容，Pentium Agent 將會為您建立任務。
 
 ## 社群回饋
 
@@ -54,8 +54,8 @@ Pentium Agent provides a mainstream and user-friendly language model chat interf
 
 Pentium Agent currently supports Mac (ARM) and Windows. ***Please ensure you have [Docker](https://www.docker.com/) installed.*** You can download the latest version from the links below:
 
-* [Windows](#)
-* [Mac(ARM)](#)
+* [Windows](https://releases.pentium.network/pentium-agent/1.0.0/PentiumAgent-1.0.0-beta-win-x64.exe)
+* [Mac(ARM)](https://releases.pentium.network/pentium-agent/1.0.0/PentiumAgent-1.0.0-beta-mac-arm64.dmg)
 
 Mac users who encounter file corruption issues can refer to [this document](https://mrmad.com.tw/macos-ventura-file-corrupted) to resolve the issue.
 
@@ -63,16 +63,16 @@ Mac users who encounter file corruption issues can refer to [this document](http
 
 After launching the Pentium application, you can start using Pentium Agent by following these steps:
 
-1.  **Set up AI Provider:** Add your preferred language model platform (currently only OpenRouter is supported). You can generate an API Key on [OpenRouter](https://openrouter.ai/settings/keys) and add it to Pentium Agent, then select the model you want to use.
-2.  **Set up MCP Server:** Add your MCP server on the MCP page, or select and add one from the Pentium Marketplace.  MCP servers provided by the Pentium Marketplace are Docker-based, so please make sure your Docker environment is running before use.
-3.  **Chat with LLM:**  In Pentium Agent, you can chat with the LLM like any mainstream chat application, addressing your daily work and life tasks, and create tasks.
-4.  **Create Tasks:** You can create daily tasks by saying "Please create a task for me." Specify the [cron](https://en.wikipedia.org/wiki/Cron) execution time and describe the task content, and Pentium Agent will create the task for you.
+1.  **Set up AI Provider**: Add your preferred language model platform (currently only OpenRouter is supported). You can generate an API Key on [OpenRouter](https://openrouter.ai/settings/keys) and add it to Pentium Agent, then select the model you want to use.
+2.  **Set up MCP Server**: Add your MCP server on the MCP page, or select and add one from the Pentium Marketplace.  MCP servers provided by the Pentium Marketplace are Docker-based, so please make sure your Docker environment is running before use.
+3.  **Chat with LLM**:  In Pentium Agent, you can chat with the LLM like any mainstream chat application, addressing your daily work and life tasks, and create tasks.
+4.  **Create Tasks**: You can create daily tasks by saying "Please create a task for me." Specify the [cron](https://en.wikipedia.org/wiki/Cron) execution time and describe the task content, and Pentium Agent will create the task for you.
 
 ## Community Feedback
 
 Pentium Agent is still under active development, and we highly value your feedback. If you encounter any issues or have any suggestions, please feel free to contact us through the following channels:
 
-* Bug Reports: [Github Issues](https://github.com/pnetwork/operator-agent/issues)
+* Issue Reports: [Github Issues](https://github.com/pnetwork/operator-agent/issues)
 * Suggestions and Feedback: [Website Feedback Form](https://www.pentiumnetwork.com/pentium-agent#feedback)
 
 ## End-User License Agreement
