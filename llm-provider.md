@@ -6,3 +6,4 @@ Below is a list of LLM providers currently available in **Pentium Agent BETA**. 
 | :----------- | :---------------------- |
 | OpenRouter | https://openrouter.ai/sign-in |
 | Google Gemini | https://aistudio.google.com/apikey |
+| OpenAI | https://platform.openai.com/api-keys |
