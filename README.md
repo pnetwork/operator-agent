@@ -1,4 +1,4 @@
-# Pentium Agent - [BETA v1.0.0]
+# Pentium Agent - [v1.1.0-BETA]
 
 [奔騰網路科技股份有限公司](https://www.pentiumnetwork.com/) 正式發佈新產品 **Pentium Agent** 的 BETA 版本。這是一款專為維運及開發人員設計的 AI Agent，BETA 版本可免費下載並安裝於您的 Windows 或 Mac 裝置上。立即開始建立您的個人 AI 助手！
 
@@ -12,20 +12,18 @@ Pentium Agent 提供主流且友善的語言模型聊天介面，輕鬆添加 MC
 
 Pentium Agent 目前支援 Mac（ARM）與 Windows 系統，***請確保您的環境已安裝 [Docker](https://www.docker.com/) 環境***。您可透過以下連結下載最新版本：
 
-* [Windows](https://releases.pentium.network/pentium-agent/1.0.0/PentiumAgent-1.0.0-beta-win-x64.exe)
-* [Mac(ARM)](https://releases.pentium.network/pentium-agent/1.0.0/PentiumAgent-1.0.0-beta-mac-arm64.dmg)
-
-Mac 的安裝者如碰到檔案損毀問題，可參考[此份文件](https://mrmad.com.tw/macos-ventura-file-corrupted)解決無法開啟的問題。
-
+* [Windows](https://releases.pentium.network/pentium-agent/1.1.0-beta/PentiumAgent-1.1.0-beta-win-x64.exe)
+* [Mac(ARM)](https://releases.pentium.network/pentium-agent/1.1.0-beta/PentiumAgent-1.1.0-beta-mac-arm64.dmg)
 
 ## 快速開始
 
 啟動 Pentium 應用程式後，您可以依照以下步驟開始使用 Pentium Agent：
 
-1.  **設定 AI 提供者**：新增您偏好的語言模型平台 (目前僅支援 OpenRouter)。您可以在 [OpenRouter](https://openrouter.ai/settings/keys) 產生 API Key 後，將其新增至 Pentium Agent，並選擇欲使用的模型。
-2.  **設定 MCP 伺服器**：在 MCP 頁面新增您的 MCP 伺服器，或從 Pentium 市集選擇並加入。Pentium 市集提供的 MCP 伺服器皆以 Docker 方式提供，使用前請確認您的 Docker 環境已啟動。
-3.  **與 LLM 聊天並建立任務**：在 Pentium Agent 中您可以像使用主流的對話應用程式一樣，與 LLM 進行對話，解決您的日常工作與生活大小事，並建立任務。
-4.  **建立日常任務**：您可以透過「請幫我建立一個任務」來建立日常任務。請指定 [cron](https://en.wikipedia.org/wiki/Cron) 執行時間，並描述工作內容，Pentium Agent 將會為您建立任務。
+1. **設定 AI 提供者**：新增您偏好的語言模型平台。您可以在 [LLM 提供商](llm-provider.md) 中找到您的語言模型平台，並在產生 API Key 後，將其新增至 Pentium Agent，並選擇欲使用的模型。
+2. **設定 MCP 伺服器**：在 MCP 頁面新增您的 MCP 伺服器，或從 Pentium 市集選擇並加入。Pentium 市集提供的 MCP 伺服器皆以 Docker 方式提供，使用前請確認您的 Docker 環境已啟動。
+3. **與 LLM 聊天並建立任務**：在 Pentium Agent 中您可以像使用主流的對話應用程式一樣，與 LLM 進行對話，解決您的日常工作與生活大小事，並建立任務。
+4. **建立日常任務**：您可以透過「請幫我建立一個任務」來建立日常任務。提供你要執行的工作排程時間，並描述工作內容，Pentium Agent 將會為您建立任務。
+5. **客製化模型助理**：現在你可以自定義模型使用的 Prompt 樣板，自由定義並根據使用情境切換，讓 Pentium Agent 更符合您的使用情境。
 
 ## 社群回饋
 
@@ -40,7 +38,7 @@ Pentium Agent 仍在積極開發中，我們非常重視您的意見與回饋。
 
 ---
 
-# Pentium Agent - [BETA v1.0.0]
+# Pentium Agent - [BETA v1.1.0]
 
 [Pentium Network Technology Ltd](https://www.pentiumnetwork.com/) officially releases the BETA version of its new product, **Pentium Agent**. This AI Agent is specifically tailored for operations and developers. The BETA version is available for free download and installation on your Windows or Mac devices. Start building your personal AI assistant today!
 
@@ -54,19 +52,19 @@ Pentium Agent provides a mainstream and user-friendly language model chat interf
 
 Pentium Agent currently supports Mac (ARM) and Windows. ***Please ensure you have [Docker](https://www.docker.com/) installed.*** You can download the latest version from the links below:
 
-* [Windows](https://releases.pentium.network/pentium-agent/1.0.0/PentiumAgent-1.0.0-beta-win-x64.exe)
-* [Mac(ARM)](https://releases.pentium.network/pentium-agent/1.0.0/PentiumAgent-1.0.0-beta-mac-arm64.dmg)
-
-Mac users who encounter file corruption issues can refer to [this document](https://mrmad.com.tw/macos-ventura-file-corrupted) to resolve the issue.
+* [Windows](https://releases.pentium.network/pentium-agent/1.1.0-beta/PentiumAgent-1.1.0-beta-win-x64.exe)
+* [Mac(ARM)](https://releases.pentium.network/pentium-agent/1.1.0-beta/PentiumAgent-1.1.0-beta-mac-arm64.dmg)
 
 ## Quick Start
 
-After launching the Pentium application, you can start using Pentium Agent by following these steps:
+After launching Pentium Agent, follow these steps to get started:
 
-1.  **Set up AI Provider**: Add your preferred language model platform (currently only OpenRouter is supported). You can generate an API Key on [OpenRouter](https://openrouter.ai/settings/keys) and add it to Pentium Agent, then select the model you want to use.
-2.  **Set up MCP Server**: Add your MCP server on the MCP page, or select and add one from the Pentium Marketplace.  MCP servers provided by the Pentium Marketplace are Docker-based, so please make sure your Docker environment is running before use.
-3.  **Chat with LLM**:  In Pentium Agent, you can chat with the LLM like any mainstream chat application, addressing your daily work and life tasks, and create tasks.
-4.  **Create Tasks**: You can create daily tasks by saying "Please create a task for me." Specify the [cron](https://en.wikipedia.org/wiki/Cron) execution time and describe the task content, and Pentium Agent will create the task for you.
+1. **Set Up Your AI Provider**: Add your preferred LLM provider. You can find supported platforms in the [LLM Provider Guide](llm-provider.md). Once you generate an API key, add it to Pentium Agent and select the model you’d like to use.
+2. **Configure Your MCP Server**: Go to the MCP tab to add your own server, or select one from the Pentium Marketplace. All servers are provided via Docker—please ensure Docker is running.
+3. **Chat with LLM and Create Tasks**: Use the chat interface to communicate with the LLM as you would with any messaging app. Solve daily problems or create tasks directly from the conversation.
+4. **Create Daily Tasks**: Simply ask, “Help me create a task,” specify the schedule and task description, and Pentium Agent will handle the rest.
+5. **Customize Your Assistant**: Define your own prompt templates and switch them based on different scenarios. Tailor your assistant’s behavior to your unique needs.
+
 
 ## Community Feedback
 
